@@ -45,17 +45,17 @@ namespace API.Base
             return CreatedAtAction("Get",new { id = entity.Id}, entity);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<TEntity>> Put(int id, TEntity entity)
-        {
-            if(id != entity.Id)
-            {
-                return BadRequest();
-            }
-            var put = await _repository.Get(id);
-            await _repository.Put(put);
-            return Ok("Update Successfully");
-        }
+        //[HttpPut("{id}")]
+        //public async Task<ActionResult<TEntity>> Put(int id, TEntity entity)
+        //{
+        //    if (id != entity.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    var put = await _repository.Get(id);
+        //    await _repository.Put(put);
+        //    return Ok("Update Successfully");
+        //}
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<TEntity>> Delete(int id)

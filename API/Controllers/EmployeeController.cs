@@ -14,9 +14,34 @@ namespace API.Controllers
     [ApiController]
     public class EmployeeController : BasesController<Employee, EmployeeRepository>
     {
+        private readonly EmployeeRepository _repository;
+
         public EmployeeController(EmployeeRepository employeeRepository) : base(employeeRepository)
         {
+            this._repository = employeeRepository;
+        }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Employee>> Put(int id, Employee entity)
+        {
+            //if (id != entity.Id)
+            //{
+            //    return BadRequest();
+            //}
+            var put = await _repository.Get(id);
+            if (put == null)
+            {
+                return NotFound();
+            }
+            put.FirstName = entity.FirstName;
+            put.LastName = entity.LastName;
+            put.Email = entity.Email;
+            put.BirthDate = entity.BirthDate;
+            put.PhoneNumber = entity.PhoneNumber;
+            put.Address = entity.Address;
+            put.UpdateDate = DateTimeOffset.Now;
+            await _repository.Put(put);
+            return Ok("Update Successfully");
         }
     }
 }
