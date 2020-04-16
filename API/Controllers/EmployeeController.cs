@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Base;
 using API.Models;
 using API.Repository.Data;
+using API.RepositoryContext;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,10 +25,6 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Employee>> Put(int id, Employee entity)
         {
-            //if (id != entity.Id)
-            //{
-            //    return BadRequest();
-            //}
             var put = await _repository.Get(id);
             if (put == null)
             {

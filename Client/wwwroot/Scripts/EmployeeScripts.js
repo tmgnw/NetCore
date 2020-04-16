@@ -1,12 +1,12 @@
 ﻿$(document).ready(function () {
-    table = $('#Department').dataTable({
+    table = $('#Employee').dataTable({
         "ajax": {
-            url: "/Department/LoadDepartment",
+            url: "/Employee/LoadEmployee",
             type: "GET",
-            dataType : "json"
+            dataType: "json"
         },
         "columnDefs": [{
-            "targets": [3],
+            "targets": [8],
             "orderable": false
         }],
         dom: 'Bfrtip',
@@ -14,7 +14,17 @@
             'csv', 'excel', 'pdf'
         ],
         "columns": [
-            { "data": "name"},
+            //{ "data": "FullName" },
+            { "data": "firstName" },
+            { "data": "lastName" },
+            { "data": "email" },
+            {
+                "data": "birthDate", "render": function (data) {
+                    return moment(data).format('DD MMMM YYYY');
+                }
+            },
+            { "data": "phoneNumber" },
+            { "data": "address" },
             {
                 "data": "createDate", "render": function (data) {
                     return moment(data).format('DD MMMM YYYY, h:mm a');
@@ -49,7 +59,7 @@ document.getElementById("Add").addEventListener("click", function () {
 //------------------------------------------------------------//
 function GetById(Id) {
     $.ajax({
-        url: "/Department/GetById/" + Id,
+        url: "/Employee/GetById/" + Id,
         type: "GET",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -70,37 +80,87 @@ function GetById(Id) {
 //------------------------------------------------------------//
 function Save() {
     $.fn.dataTable.ext.errMode = 'none';
-    var table = $('#Department').DataTable({
+    var table = $('#Employee').DataTable({
         "ajax": {
-            url: "/Department/LoadDepartment"
+            url: "/Employee/LoadEmployee"
         }
     });
-    var Department = new Object();
-    Department.Name = $('#Name').val();
-    if ($('#Name').val() == "") {
+    var Employee = new Object();
+    Employee.FirstName = $('#FirstName').val();
+    Employee.LastName = $('#LastName').val();
+    Employee.Email = $('#Email').val();
+    Employee.BirthDate = $('#BirthDate').val();
+    Employee.PhoneNumber = $('#PhoneNumber').val();
+    Employee.Address = $('#Address').val();
+    if ($('#FirstName').val() == "") {
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Name Cannot be Empty',
+            text: 'FirstName Cannot be Empty',
+        })
+        return false;
+    }
+    else if ($('#LastName').val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'LastName Cannot be Empty',
+        })
+        return false;
+    }
+    else if ($('#Email').val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Email Cannot be Empty',
+        })
+        return false;
+    }
+    else if ($('#BirthDate').val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'BirthDate Cannot be Empty',
+        })
+        return false;
+    }
+    else if ($('#PhoneNumber').val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'PhoneNumber Cannot be Empty',
+        })
+        return false;
+    }
+    else if ($('#Address').val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Address Cannot be Empty',
         })
         return false;
     } else {
         $.ajax({
             type: 'POST',
-            url: '/Department/InsertOrUpdate',
-            data: Department,
+            url: '/Employee/InsertOrUpdate',
+            data: Employee,
         }).then((result) => {
             if (result.statusCode == 201) {
                 Swal.fire({
                     icon: 'success',
                     potition: 'center',
-                    title: 'Department Add Successfully',
+                    title: 'Employee Add Successfully',
                     timer: 2000
                 }).then(function () {
                     table.ajax.reload();
                     $('#myModal').modal('hide');
                     $('#Id').val('');
-                    $('#Name').val('');
+                    $('#FirstName').val('');
+                    $('#LastName').val();
+                    $('#Email').val();
+                    $('#BirthDate').val();
+                    $('#PhoneNumber').val();
+                    $('#Address').val();
                 });
             }
             else {

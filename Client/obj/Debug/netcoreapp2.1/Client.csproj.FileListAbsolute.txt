@@ -20,6 +20,7 @@ C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Client.TagHe
 C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Client.TagHelpers.output.cache
 C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Client.RazorCoreGenerate.cache
 C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.cshtml.g.cs
+C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs
 C:\Users\Thomas\source\repos\NetCore\Client\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
