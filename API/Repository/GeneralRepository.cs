@@ -44,9 +44,9 @@ namespace API.Repository
             return await _myContext.Set<TEntity>().Where(x => x.IsDelete == false).ToListAsync();
         }
 
-        public async Task<TEntity> Get(int id)
+        public async Task<TEntity> Get(int Id)
         {
-            return await _myContext.Set<TEntity>().FindAsync(id);
+            return await _myContext.Set<TEntity>().FindAsync(Id);
         }
 
         public async Task<TEntity> Post(TEntity entity)

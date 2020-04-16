@@ -63,7 +63,7 @@ namespace Client.Controllers
 
         public JsonResult GetById(int Id)
         {
-            DepartmentJson departmentVM = null;
+            DepartmentVM departmentVM = null;
             var client = new HttpClient
             {
                 BaseAddress = new Uri("https://localhost:44374/api/")
@@ -74,7 +74,7 @@ namespace Client.Controllers
             if (result.IsSuccessStatusCode)
             {
                 var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                departmentVM = JsonConvert.DeserializeObject<DepartmentJson>(json);
+                departmentVM = JsonConvert.DeserializeObject<DepartmentVM>(json);
             }
             else
             {

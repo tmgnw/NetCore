@@ -33,7 +33,7 @@
             },
             {
                 data: null, render: function (data, type, row) {
-                    return " <td><button type='button' class='btn btn-warning' id='Update' onclick=GetById('" + row.Id + "');>Edit</button> <button type='button' class='btn btn-danger' id='Delete' onclick=Delete('" + row.Id + "');>Delete</button ></td >";
+                    return " <td><button type='button' class='btn btn-warning' id='Update' onclick=GetById('" + row.id + "');>Edit</button> <button type='button' class='btn btn-danger' id='Delete' onclick=Delete('" + row.id + "');>Delete</button ></td >";
                 }
             },
         ]
@@ -48,7 +48,6 @@ document.getElementById("Add").addEventListener("click", function () {
 });
 //------------------------------------------------------------//
 function GetById(Id) {
-    debugger;
     $.ajax({
         url: "/Department/GetById/" + Id,
         type: "GET",
@@ -56,9 +55,9 @@ function GetById(Id) {
         dataType: "json",
         async: false,
         success: function (result) {
-            const obj = JSON.parse(result);
-            $('#Id').val(obj.Id);
-            $('#Name').val(obj.Name);
+            //const obj = JSON.parse(result);
+            $('#Id').val(result.id);
+            $('#Name').val(result.name);
             $('#myModal').modal('show');
             $('#Update').show();
             $('#Save').hide();
@@ -91,7 +90,7 @@ function Save() {
             url: '/Department/InsertOrUpdate',
             data: Department,
         }).then((result) => {
-            if (result.StatusCode == 200) {
+            if (result.statusCode == 201) {
                 Swal.fire({
                     icon: 'success',
                     potition: 'center',
@@ -126,8 +125,7 @@ function Edit() {
         url: '/Department/InsertOrUpdate',
         data: Department
     }).then((result) => {
-        debugger;
-        if (result.StatusCode == 200) {
+        if (result.statusCode == 200) {
             Swal.fire({
                 icon: 'success',
                 potition: 'center',
@@ -159,13 +157,11 @@ function Delete(Id) {
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.value) {
-            debugger;
             $.ajax({
                 url: "/Department/Delete/",
                 data: { Id: Id }
             }).then((result) => {
-                debugger;
-                if (result.StatusCode == 200) {
+                if (result.statusCode == 200) {
                     Swal.fire({
                         icon: 'success',
                         position: 'center',
@@ -189,9 +185,3 @@ function Delete(Id) {
         }
     });
 }
-
-//function erere() {
-//    $.ajax({
-//        url: "/Department/Excel"
-//    })
-//}

@@ -28,9 +28,9 @@ namespace API.Base
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>> Get(int id)
+        public async Task<ActionResult<TEntity>> Get(int Id)
         {
-            var get = await _repository.Get(id);
+            var get = await _repository.Get(Id);
             if(get == null)
             {
                 return NotFound();
