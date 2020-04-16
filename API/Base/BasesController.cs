@@ -20,23 +20,23 @@ namespace API.Base
             this._repository = repository;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<TEntity>> Get()
-        {
-            var get = await _repository.Get();
-            return Ok(new { data = get });
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<TEntity>> Get()
+        //{
+        //    var get = await _repository.Get();
+        //    return Ok(new { data = get });
+        //}
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>> Get(int Id)
-        {
-            var get = await _repository.Get(Id);
-            if(get == null)
-            {
-                return NotFound();
-            }
-            return Ok(get);
-        }
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<TEntity>> Get(int Id)
+        //{
+        //    var get = await _repository.Get(Id);
+        //    if (get == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(get);
+        //}
 
         [HttpPost]
         public async Task<ActionResult<TEntity>> Post(TEntity entity)

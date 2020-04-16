@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AlC/PfqN5xxK2jFE3HY0AY+fEYA59OXqKT+DYYkiNDG884GluUt6KrpN9EbdgMxOLdLXRZHLWHTr7k/Y4+GppQ==",
+  "dgSpecHash": "f2t56nG+1CDXnnQ2dw8rjIfcQnUbbRK8gD6oAQH30mmgIhssgwrt/kJNL8uqW0mfqr9tRbURRiW2f7N1GlzG/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Thomas\\source\\repos\\NetCore\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Thomas\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",
@@ -252,7 +253,7 @@
     "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
-    "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
     "C:\\Users\\Thomas\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",

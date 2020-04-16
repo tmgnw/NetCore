@@ -12,6 +12,11 @@ namespace Client.Controllers
 {
     public class EmployeeController : Controller
     {
+        readonly HttpClient client = new HttpClient
+        {
+            BaseAddress = new Uri("https://localhost:44374/api/")
+        };
+
         public IActionResult Index()
         {
             return View(LoadEmployee());
@@ -20,10 +25,6 @@ namespace Client.Controllers
         public JsonResult LoadEmployee()
         {
             EmployeeJson employeeVM = null;
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44374/api/")
-            };
             var responseTask = client.GetAsync("Employee");
             responseTask.Wait();
             var result = responseTask.Result;
@@ -41,10 +42,6 @@ namespace Client.Controllers
 
         public JsonResult InsertOrUpdate(EmployeeVM employeeVM)
         {
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44374/api/")
-            };
             var myContent = JsonConvert.SerializeObject(employeeVM);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
@@ -63,32 +60,25 @@ namespace Client.Controllers
 
         public JsonResult GetById(int Id)
         {
-            EmployeeVM employeeVM = null;
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44374/api/")
-            };
+            IEnumerable<EmployeeVM> employee = null;
             var responseTask = client.GetAsync("Employee/" + Id);
             responseTask.Wait();
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                employeeVM = JsonConvert.DeserializeObject<EmployeeVM>(json);
+                var readTask = result.Content.ReadAsAsync<IList<EmployeeVM>>();
+                readTask.Wait();
+                employee = readTask.Result;
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "server error, try after some time");
+                ModelState.AddModelError(string.Empty, "Server Error");
             }
-            return Json(employeeVM);
+            return Json(employee);
         }
 
         public JsonResult Delete(int Id)
         {
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44374/api/")
-            };
             var result = client.DeleteAsync("Employee/" + Id).Result;
             return Json(result);
         }

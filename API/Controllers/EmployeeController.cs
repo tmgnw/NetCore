@@ -22,6 +22,24 @@ namespace API.Controllers
             this._repository = employeeRepository;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<EmployeeVM>> Get()
+        {
+            var get = await _repository.GetAll();
+            return Ok(new { data = get });
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<EmployeeVM>> Get(int Id)
+        {
+            var get = await _repository.GetById(Id);
+            if (get == null)
+            {
+                return NotFound();
+            }
+            return Ok(get);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Employee>> Put(int id, Employee entity)
         {

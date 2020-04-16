@@ -21,6 +21,13 @@ namespace API.Controllers
             this._repository = departmentRepository;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<Department>> Get()
+        {
+            var get = await _repository.Get();
+            return Ok(new { data = get });
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Department>> Put(int id, Department entity)
         {
