@@ -167,13 +167,14 @@ function Save() {
 }
 //------------------------------------------------------------//
 function Edit() {
-    $.fn.dataTable.ext.errMode = 'none';
-    var table = $('#Employee').DataTable({
-        "ajax": {
-            url: "/Employee/LoadEmployee"
-        }
-    });
+    //$.fn.dataTable.ext.errMode = 'none';
+    //var table = $('#Employee').DataTable({
+    //    "ajax": {
+    //        url: "/Employee/LoadEmployee"
+    //    }
+    //});
     var Employee = new Object();
+    Employee.Id = $('#Id').val();
     Employee.FirstName = $('#Firstname').val();
     Employee.LastName = $('#Lastname').val();
     Employee.Email = $('#Email').val();
