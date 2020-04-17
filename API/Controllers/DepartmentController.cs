@@ -28,6 +28,17 @@ namespace API.Controllers
             return Ok(new { data = get });
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Department>> Get(int Id)
+        {
+            var get = await _repository.Get(Id);
+            if (get == null)
+            {
+                return NotFound();
+            }
+            return Ok(get);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Department>> Put(int id, Department entity)
         {

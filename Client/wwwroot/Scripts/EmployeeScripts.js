@@ -121,6 +121,18 @@ function renderDepartment(element) {
     });
 }
 //------------------------------------------------------------//
+function ClearScreen() {
+    $('#myModal').modal('hide');
+    $('#Id').val('');
+    $('#Firstname').val('');
+    $('#Lastname').val('');
+    $('#Email').val('');
+    $('#Birthdate').val('');
+    $('#Phonenumber').val('');
+    $('#Address').val('');
+    $('#DepartmentOption').val('');
+}
+//------------------------------------------------------------//
 function Save() {
     $.fn.dataTable.ext.errMode = 'none';
     var table = $('#Employee').DataTable({
@@ -149,15 +161,16 @@ function Save() {
                     timer: 2000
                 }).then(function () {
                     table.ajax.reload();
-                    $('#myModal').modal('hide');
-                    $('#Id').val('');
-                    $('#Firstname').val('');
-                    $('#Lastname').val('');
-                    $('#Email').val('');
-                    $('#Birthdate').val('');
-                    $('#Phonenumber').val('');
-                    $('#Address').val('');
-                    $('#DepartmentOption').val('');
+                    ClearScreen();
+                    //$('#myModal').modal('hide');
+                    //$('#Id').val('');
+                    //$('#Firstname').val('');
+                    //$('#Lastname').val('');
+                    //$('#Email').val('');
+                    //$('#Birthdate').val('');
+                    //$('#Phonenumber').val('');
+                    //$('#Address').val('');
+                    //$('#DepartmentOption').val('');
                 });
             }
             else {
@@ -167,12 +180,12 @@ function Save() {
 }
 //------------------------------------------------------------//
 function Edit() {
-    //$.fn.dataTable.ext.errMode = 'none';
-    //var table = $('#Employee').DataTable({
-    //    "ajax": {
-    //        url: "/Employee/LoadEmployee"
-    //    }
-    //});
+    $.fn.dataTable.ext.errMode = 'none';
+    var table = $('#Employee').DataTable({
+        "ajax": {
+            url: "/Employee/LoadEmployee"
+        }
+    });
     var Employee = new Object();
     Employee.Id = $('#Id').val();
     Employee.FirstName = $('#Firstname').val();
@@ -195,15 +208,16 @@ function Edit() {
                 timer: 2500
             }).then(function () {
                 table.ajax.reload();
-                $('#myModal').modal('hide');
-                $('#Id').val('');
-                $('#Firstname').val('');
-                $('#Lastname').val('');
-                $('#Email').val('');
-                $('#Birthdate').val('');
-                $('#Phonenumber').val('');
-                $('#Address').val('');
-                $('#DepartmentOption').val('');
+                ClearScreen();
+                //$('#myModal').modal('hide');
+                //$('#Id').val('');
+                //$('#Firstname').val('');
+                //$('#Lastname').val('');
+                //$('#Email').val('');
+                //$('#Birthdate').val('');
+                //$('#Phonenumber').val('');
+                //$('#Address').val('');
+                //$('#DepartmentOption').val('');
             });
         } else {
             Swal.fire('Error', 'Failed to Update', 'error');
@@ -237,15 +251,16 @@ function Delete(Id) {
                         timer: 2000
                     }).then(function () {
                         table.ajax.reload();
-                        $('#myModal').modal('hide');
-                        $('#Id').val('');
-                        $('#Firstname').val('');
-                        $('#Lastname').val('');
-                        $('#Email').val('');
-                        $('#Birthdate').val('');
-                        $('#Phonenumber').val('');
-                        $('#Address').val('');
-                        $('#DepartmentOption').val('');
+                        ClearScreen();
+                        //$('#myModal').modal('hide');
+                        //$('#Id').val('');
+                        //$('#Firstname').val('');
+                        //$('#Lastname').val('');
+                        //$('#Email').val('');
+                        //$('#Birthdate').val('');
+                        //$('#Phonenumber').val('');
+                        //$('#Address').val('');
+                        //$('#DepartmentOption').val('');
                     });
                 }
                 else {
